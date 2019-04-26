@@ -114,13 +114,13 @@ void wait(int cycles) {
 }
 
 void enterCredentials() {
-  wait(4);
+  wait(5);
   Keyboard.print(username);
-  wait(2);
+  wait(5);
   Keyboard.write(KEY_ENTER);
-  wait(2);
+  wait(5);
   Keyboard.print(password);
-  wait(3);
+  wait(5);
   Keyboard.write(KEY_ENTER);
   wait(2);
 }
@@ -136,7 +136,7 @@ void enterEnrollment() {
 
 void wifiConfig() {
   // TABs to enter Wifi Configuration. Change the number below to match if your devices require a different number of tabs to select the wifi configuration
-  repeatKey(KEY_TAB, 3);
+  repeatKey(KEY_TAB, 3); //Make sure no options have focus when you connect your centipede to your chromebook or the tabs will be off
 //  wait(1);
   Keyboard.write(KEY_ENTER);
   // Up arrow 2 times to open other wifi settings
@@ -150,7 +150,7 @@ void wifiConfig() {
   Keyboard.write(KEY_TAB);
   wait(1);
   if (wifi_security == 0) {
-  	repeatKey(KEY_TAB,2);
+  	repeatKey(KEY_TAB,3);
   } else {
   	repeatKey(KEY_DOWN_ARROW, wifi_security);
   	// TAB
