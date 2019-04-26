@@ -15,3 +15,14 @@ This changed code for Centipede_Code_V57_Down has been tested and works correctl
 
 HP Chromebook 11 G5 EE </br>
 &emsp;&emsp;Running Version 56 out of the box.
+
+
+
+
+
+<h2><b>Centipede_Code_V58_Up</b></h2>
+
+This minor change adjusted one default and now works correctly out of the box with the following models:
+
+HP Chromebook 11 G5 EE </br>
+&emsp;&emsp;Running Version 71 out of the box.
