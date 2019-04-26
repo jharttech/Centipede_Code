@@ -14,4 +14,4 @@ Original Code was published under MIT License https://opensource.org/licenses/MI
 This changed code for Centipede_Code_V57_Down has been tested and works correctly on the following models:
 
 HP Chromebook 11 G5 EE
-<pre>Running Version 56 out of the box.</pre>
+&emsp;&emsp;Running Version 56 out of the box.
