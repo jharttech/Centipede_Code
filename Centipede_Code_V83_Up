@@ -14,17 +14,17 @@
 
 #define device_version 83 // Change to the ChromeOS version you expect to use with Centipede; Changes have been reported in the following ranges 58-68, 69, 70
 
-#define wifi_name "CPTech36" // Define SSID for your wireless connection.
+#define wifi_name "---" // Define SSID for your wireless connection.
 #define wifi_pass "---" // Define the password for your wireless connection.
 #define wifi_security 0 //[0,1,2] Set to 0 for open, 1 for WEP, 2 for WPA
-#define username "mg" // Define the user name for enrolling the device.
+#define username "---" // Define the user name for enrolling the device.
 #define password "---" // The password for the enrollment GAFE account.
 
 // Use these options to determine if you want to disable analytics, skip asset ID, or if you need to slow down the Centipede
 
 #define sendUsageToGoogle 1 //[0,1] Set to 0 if you want to un-check the box to send usage analytics to Google
 #define shutdown_when_finished 0 //[0,1] Set to 0 if you want Centipede to stop at the asset ID and location screen
-#define selected_on_boot 3 //[0,1,2,3]  Active location when device poweron : 3 - "Let's go"(Default), 2 - accessibility, 1 - language, 0 - menu 
+#define selected_on_boot 1 //[0,1,2,3]  Active location when device poweron : 3 - "Let's go"(Default), 2 - accessibility, 1 - language, 0 - menu 
 
 /* These are advanced options. The defaults should be fine, but feel free to tweak values below. */
 
@@ -33,7 +33,7 @@
 // Use this area for advanced network setup options
 #define advancedNetworkSetup false //[true,false] Set to true for EAP configuration, and fill out the definitions below
 #define eapMethod "LEAP" // Valid options are "LEAP" "PEAP" "EAP-TLS" or "EAP-TTLS" - Note that they require the quotes to work properly
-#define phaseTwoAuthentication 2 //[0,1,2,3,4,5,6] Set to 0 for automatic, 1 for EAP-MD5, 2 for MSCHAP(v2 pre v69; v1 V69+, 3 for MSCHAPv2, 4 for PAP, 5 for CHAP, 6 for GTC; v69+)
+#define phaseTwoAuthentication 0 //[0,1,2,3,4,5,6] Set to 0 for automatic, 1 for EAP-MD5, 2 for MSCHAP(v2 pre v69; v1 V69+, 3 for MSCHAPv2, 4 for PAP, 5 for CHAP, 6 for GTC; v69+)
 #define serverCaCertificateCheck 0 //[0,1] 0 is default, 1 is "Do not check"
 #define subjectMatch "" // Fill in subject match here if needed for advanced wireless
 #define identity "identity" // Fill in identity here if needed for advanced wireless
@@ -43,7 +43,7 @@
 
 // Use this section for additional non-traditional methods
 #define longer_enrollment_time 30 // Set to additional seconds to wait for Device Configuration and Enrollment
-#define powerwash 1 //[0,1] Powerwash the device BEFORE enrollment is completed - NOTE: Will not work on ENROLLED devices. Used for Setting up Centipede.
+#define powerwash 0 //[0,1] Powerwash the device BEFORE enrollment is completed - NOTE: Will not work on ENROLLED devices. Used for Setting up Centipede.
 #define sign_in 0 //[0,1] Set to 1 to sign-in to the device after enrollment
 #define remove_enrollment_wifi 0 //[0,1] Set to 1 to remove the enrollment wifi network. *sign_in also must be true* - NOTE: Only set to true when Chrome Device Network has been pulled down
 #define enroll_device_cert 0 //[0,1] Set to 1 if enrolling device wide certificate *sign_in also must be true* - NOTE: Works best if user _*only*_ has Certificate Enrollment extension force installed
@@ -214,20 +214,7 @@ void enterEnrollment() {
 void ToS(){
 // Terms of Service screen //Changed in v78
   wait(1);
-  if(VERSION_78){
-    Keyboard.press(KEY_LEFT_SHIFT);
-    wait(1);
-  }
-  repeatKey(KEY_TAB, 2 + VERSION_78);
-  if(VERSION_78){
-    Keyboard.release(KEY_LEFT_SHIFT);
-    wait(1);
-  }
-  if (!sendUsageToGoogle) {
-    Keyboard.write(KEY_ENTER);
-    wait(1);
-  }
-  repeatKey(KEY_TAB, 3);
+  repeatKey(KEY_TAB, 5);
   wait(1);
   Keyboard.write(KEY_ENTER);
 }
@@ -284,10 +271,10 @@ void welcomeScreen() {
   wait(2);
   Keyboard.write(KEY_ENTER); // Click "Let's Go"
   wait(1);
-  if (!VERSION_78){
-    repeatKey(KEY_TAB, 2 + VERSION_70); // 3 for version 70+ (black menu)
-  // After connecting, enter the enrollment key command to skip checking for update at this point in the process
-  }
+  repeatKey(KEY_TAB, 3);
+  wait(1);
+  Keyboard.write(KEY_ENTER);
+  wait(2);
   enterEnrollment();
   wait(1);
   Keyboard.write(KEY_ENTER); // Click "Next"
