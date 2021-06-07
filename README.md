@@ -31,7 +31,8 @@ HP Chromebook 11 G5 EE </br>
 
 This change has taken into account the new menu structure in V87 out of the box with the following model:
 HP Chromebook 11MK G9 EE </br>
+&emsp;&emsp;Running Version 87 out of the box.
 <br>I also added a 5 second delay on start of code to stop button press on machine that is uploading code onto centipedes.</br>
 <br>CODE IS DIRT.  Need to clean up unused settings for campus.</br>
 <br>Defaults are set for MG Campus use.</br>
-&emsp;&emsp;Running Version 87 out of the box.
+
